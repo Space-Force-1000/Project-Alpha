@@ -471,6 +471,8 @@ public:
     // Publish chess position and supplementary info in forsyth notation
     std::string ForsythPublish();
 
+    char GetPieceFromSquare(std::string square);
+
     // Compress a ChessPosition into 24 bytes, return 16 bit hash
     unsigned short Compress( CompressedPosition &dst ) const;
 
@@ -607,7 +609,8 @@ public:
 
     // Make a move (with the potential to undo)
     void PushMove( Move& m );
-
+    //Get Pieces that are in a particular square
+    char GetPieceFromSquare(std::string square);
     // Undo a move
     void PopMove( Move& m );
 
