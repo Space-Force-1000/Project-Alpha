@@ -71,6 +71,6 @@ int main()
     std::string LegalMoves = GetLegalMoves('R', cr, mv); 
     printf("%s", LegalMoves.c_str());
 
-    char piece = cr.GetPieceFromSquare("a8");
+    char piece = cr.GetPieceFromSquare("b2");
     printf("%c\n", piece);
 }

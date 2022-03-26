@@ -950,75 +950,10 @@ char ChessPosition::GetPieceFromSquare(std::string square)
 {
     char piece;
     const char *p = squares;
-    std::string squares_txt[64] = {"a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8","a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7","a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6","a5", "b5", "c5", "d5", "e5", "f5", "g5", "h5","a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4", "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3", "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"};
     for(int i = 0; i < 64; i++)
     {
         if(squares_txt[i] == square) piece = *(p+i);
     }
-    // if (square == "a8") piece = *p;
-    // else if (square == "b8") piece = *(p+1);
-    // else if (square == "c8") piece = *(p+2);
-    // else if (square == "d8") piece = *(p+3);
-    // else if (square == "e8") piece = *(p+4);
-    // else if (square == "f8") piece = *(p+5);
-    // else if (square == "g8") piece = *(p+6);
-    // else if (square == "h8") piece = *(p+7);
-    // else if (square == "a7") piece = *(p+8);
-    // else if (square == "b7") piece = *(p+9);
-    // else if (square == "c7") piece = *(p+10);
-    // else if (square == "d7") piece = *(p+11);
-    // else if (square == "e7") piece = *(p+12);
-    // else if (square == "f7") piece = *(p+13);
-    // else if (square == "g7") piece = *(p+14);
-    // else if (square == "h7") piece = *(p+15);
-    // else if (square == "a6") piece = *(p+16);
-    // else if (square == "b6") piece = *(p+17);
-    // else if (square == "c6") piece = *(p+18);
-    // else if (square == "d6") piece = *(p+19);
-    // else if (square == "e6") piece = *(p+20);
-    // else if (square == "f6") piece = *(p+21);
-    // else if (square == "g6") piece = *(p+22);
-    // else if (square == "h6") piece = *(p+23);
-    // else if (square == "a5") piece = *(p+24);
-    // else if (square == "b5") piece = *(p+25);
-    // else if (square == "c5") piece = *(p+26);
-    // else if (square == "d5") piece = *(p+27);
-    // else if (square == "e5") piece = *(p+28);
-    // else if (square == "f5") piece = *(p+29);
-    // else if (square == "g5") piece = *(p+30);
-    // else if (square == "h5") piece = *(p+31);
-    // else if (square == "a4") piece = *(p+32);
-    // else if (square == "b4") piece = *(p+33);
-    // else if (square == "c4") piece = *(p+34);
-    // else if (square == "d4") piece = *(p+35);
-    // else if (square == "e4") piece = *(p+36);
-    // else if (square == "f4") piece = *(p+37);
-    // else if (square == "g4") piece = *(p+38);
-    // else if (square == "h4") piece = *(p+39);
-    // else if (square == "a3") piece = *(p+40);
-    // else if (square == "b3") piece = *(p+41);
-    // else if (square == "c3") piece = *(p+42);
-    // else if (square == "d3") piece = *(p+43);
-    // else if (square == "e3") piece = *(p+44);
-    // else if (square == "f3") piece = *(p+45);
-    // else if (square == "g3") piece = *(p+46);
-    // else if (square == "h3") piece = *(p+47);
-    // else if (square == "a2") piece = *(p+48);
-    // else if (square == "b2") piece = *(p+49);
-    // else if (square == "c2") piece = *(p+50);
-    // else if (square == "d2") piece = *(p+51);
-    // else if (square == "e2") piece = *(p+52);
-    // else if (square == "f2") piece = *(p+53);
-    // else if (square == "g2") piece = *(p+54);
-    // else if (square == "h2") piece = *(p+55);
-    // else if (square == "a1") piece = *(p+56);
-    // else if (square == "b1") piece = *(p+57);
-    // else if (square == "c1") piece = *(p+58);
-    // else if (square == "d1") piece = *(p+59);
-    // else if (square == "e1") piece = *(p+60);
-    // else if (square == "f1") piece = *(p+61);
-    // else if (square == "g1") piece = *(p+62);
-    // else if (square == "h1") piece = *(p+63);
     return piece;
 }
 
