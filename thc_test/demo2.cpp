@@ -16,6 +16,7 @@ void display_position( thc::ChessRules &cr, const std::string &description )
 
 std::string GetLegalMoves( char piece, ChessRules &cr, Move &mv)
 {
+    piece = toupper(piece); // Now the function takes both upper and lowercase letters and finds the legal moves for the piece
     std::string s = "";
     std::vector<thc::Move> moves;
     std::vector<bool> check;
@@ -68,7 +69,7 @@ int main()
     bool legalF;
 
     printf( "Are you mad or something\n" );
-    std::string LegalMoves = GetLegalMoves('R', cr, mv); 
+    std::string LegalMoves = GetLegalMoves('n', cr, mv); 
     printf("%s", LegalMoves.c_str());
 
     char piece = cr.GetPieceFromSquare("b2");
