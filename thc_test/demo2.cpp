@@ -13,6 +13,7 @@ void display_position( thc::ChessRules &cr, const std::string &description )
     printf( "Position = %s\n", s.c_str() );
 }
 
+
 std::string GetLegalMoves( char piece, ChessRules &cr, Move &mv)
 {
     std::string s = "";
@@ -69,4 +70,7 @@ int main()
     printf( "Are you mad or something\n" );
     std::string LegalMoves = GetLegalMoves('R', cr, mv); 
     printf("%s", LegalMoves.c_str());
+
+    char piece = cr.GetPieceFromSquare("b2");
+    printf("%c\n", piece);
 }

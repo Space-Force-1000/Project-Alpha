@@ -946,6 +946,18 @@ std::string ChessPosition::ToDebugStr( const char *label )
     return s;
 }
 
+char ChessPosition::GetPieceFromSquare(std::string square)
+{
+    char piece;
+    const char *p = squares;
+    for(int i = 0; i < 64; i++)
+    {
+        if(squares_txt[i] == square) piece = *(p+i);
+    }
+    return piece;
+}
+
+
 /****************************************************************************
  * Set up position on board from Forsyth string with extensions
  *   return bool okay
