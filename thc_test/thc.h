@@ -609,8 +609,6 @@ public:
 
     // Make a move (with the potential to undo)
     void PushMove( Move& m );
-    //Get Pieces that are in a particular square
-    char GetPieceFromSquare(std::string square);
     // Undo a move
     void PopMove( Move& m );
 
