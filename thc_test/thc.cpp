@@ -1015,6 +1015,7 @@ char ChessPosition::GetPieceFromSquare(std::string square)
     else if (square == "f1") piece = *(p+61);
     else if (square == "g1") piece = *(p+62);
     else if (square == "h1") piece = *(p+63);
+    return piece;
 }
 
 
