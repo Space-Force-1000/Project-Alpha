@@ -950,7 +950,6 @@ char ChessPosition::GetPieceFromSquare(std::string square)
 {
     char piece;
     const char *p = squares;
-    return piece;
     if (square == "a8") piece = *p;
     else if (square == "b8") piece = *(p+1);
     else if (square == "c8") piece = *(p+2);
