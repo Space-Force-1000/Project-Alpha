@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <string>
 #include "private.h"
 
 // Important Libraries
@@ -7,13 +8,9 @@
 #include <ArduinoJson.h>
 #include <WiFi.h>
 
-// Topics of MQTT
-#define AWS_IOT_PUBLISH_TOPIC   "chessBoard1/moves"
-#define AWS_IOT_SUBSCRIBE_TOPIC "chessBoard2/moves"
-
 WiFiClientSecure net = WiFiClientSecure();
 PubSubClient client(net);
-
+String message;
 void messageHandler(char* topic, byte* payload, unsigned int length);
 
 void connectAWS()
@@ -69,7 +66,24 @@ void messageHandler(char* topic, byte* payload, unsigned int length)
     String Relay_data = doc["move"];
     int r = Relay_data.toInt();
     Serial.println(Relay_data);
+  }else if ( strstr(topic, "chessBoard1/moves") ){
+    StaticJsonDocument<200> doc;
+    deserializeJson(doc, payload);
+    String Relay_data = doc["move"];
+    int r = Relay_data.toInt();
+    Serial.println(Relay_data);
   }
+}
+// function for sending moves to second chessboard via aws
+void myTimerEvent(String message)
+{
+
+  StaticJsonDocument<200> doc;
+  doc["move"] = message;
+  char jsonBuffer[512];
+  serializeJson(doc, jsonBuffer); // print to client
+  client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+  Serial.println("Move Published");
 }
 
 void setup() {
@@ -79,5 +93,9 @@ void setup() {
 }
 
 void loop() {
+  if(Serial.available()){
+    message = Serial.readString();
+    myTimerEvent(message);
+  }
   client.loop();
 }

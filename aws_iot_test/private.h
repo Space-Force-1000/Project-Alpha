@@ -3,6 +3,10 @@
 #define SECRET
 #define THINGNAME "chessBoard1"                
 
+// Topics of MQTT
+#define AWS_IOT_PUBLISH_TOPIC   "chessBoard1/moves"
+#define AWS_IOT_SUBSCRIBE_TOPIC "chessBoard2/moves"
+
 const char WIFI_SSID[] = "david";                                
 const char WIFI_PASSWORD[] = "swordfish";                            
 const char AWS_IOT_ENDPOINT[] = "a9lr3px6arz1a-ats.iot.us-east-2.amazonaws.com";        
