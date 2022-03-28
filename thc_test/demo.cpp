@@ -13,7 +13,6 @@
 #include <string>
 #include <vector>
 #include "functions.cpp"
-#include "functions.h"
 
 int main()
 {
@@ -30,16 +29,12 @@ int main()
     std::string description = "Position after 1." + mv.NaturalOut(&cr);
     printf("%s\n\n","This is the start of the test");
     std::string legalMoves;
-    for (int i=0; i<32; i++){whitesquares_txt[i] = squares_txt[2*i];}
-    for (int i=0; i<32; i++){blacksquares_txt[i] = squares_txt[2*i + 1];}
     while(1)// while not checkmate
     {
         description = "Position after ..." + mv.NaturalOut(&cr);
         display_position( cr, description);
         scanf("%s", currentPosition);
-        char piece = cr.GetPieceFromSquare(currentPosition);
-        printf("\nThis is the piece to be moved: %c\n", piece);
-        legalMoves = GetLegalMoves( piece, cr, mv);
+        legalMoves = GetLegalMoves( currentPosition, cr, mv);
         scanf("%s", destPosition);
         
         if(legalMoves.find(destPosition)){
