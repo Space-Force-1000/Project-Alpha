@@ -1,6 +1,7 @@
 #include "functions.h"
 
 std::string possibleknightM[8];
+std::string possiblebishopM[28];
 // void possibleknightmoves(std::string square)
 // {
 //     int knight[8][2] = {{1,2},{1,-2},{-1,2},{-1,-2},{2,1},{2,-1},{-2,1},{-2,-1}};
@@ -55,25 +56,41 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
                 
             }
         }
-        else if (mv_txt[0] == 'B')
+        else if (piece == 'B' && mv_txt[0] == 'B')
         {
+            int bishop[28][2] = {{7,7},{6,6},{5,5},{4,4},{3,3},{2,2},{1,1},{-7,-7},{-6,-6},{-5,-5},{-4,-4},{-3,-3},{-2,-2},{-1,-1},{-7,7},{-6,6},{-5,5},{-4,4},{-3,3},{-2,2},{-1,1},{7,-7},{6,-6},{5,-5},{4,-4},{3,-3},{2,-2},{1,-1}};
+            int j = 0;
+            for (int i=0; i<28; i++)
+            {
+                if (currentPosition[0]+bishop[i][0] >= 'a' && currentPosition[0]+bishop[i][0] <= 'h' && currentPosition[1]+bishop[i][1] >= '1' && currentPosition[1]+bishop[i][1] <= '8')
+                {
+                    possiblebishopM[j] = std::string(1,currentPosition[0] + bishop[i][0]) + std::string(1,currentPosition[1] + bishop[i][1]);
+                    j++;
+                }
+            }
 
-            if (white)
+             //checks if move is in the generated bishop moves list and then concatenates it to a string
+            for (int i=0; i<j; i++)
             {
-                for(int j=0; j<32; j++)
-                {
-                    if ((std::string(1,mv_txt[1])+mv_txt[2]) == whitesquares_txt[j]) s += mv_txt + "\n";
-                }
+                if (mv_txt.find(possiblebishopM[i]) != -1) 
+                    s += mv_txt + "\n";
             }
-            else
-            {
-                for(int j=0; j<32; j++)
-                {
-                    if ((std::string(1,mv_txt[1])+mv_txt[2]) == blacksquares_txt[j]) s += mv_txt + "\n";
-                }
-            }
+            // if (white)
+            // {
+            //     for(int j=0; j<32; j++)
+            //     {
+            //         if ((std::string(1,mv_txt[1])+mv_txt[2]) == whitesquares_txt[j]) s += mv_txt + "\n";
+            //     }
+            // }
+            // else
+            // {
+            //     for(int j=0; j<32; j++)
+            //     {
+            //         if ((std::string(1,mv_txt[1])+mv_txt[2]) == blacksquares_txt[j]) s += mv_txt + "\n";
+            //     }
+            // }
         }
-        else if(mv_txt[0] == 'R')
+        else if(piece == 'R' && mv_txt[0] == 'R')
         {
             //condition to follow if a rook is in the current location
             for (int i=0; i<64; i++)
@@ -81,19 +98,8 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
                 if (mv_txt[mv_txt.find(squares_txt[i])] == currentPosition [0]) s += mv_txt + "\n";
                 else if (mv_txt[mv_txt.find(squares_txt[i]) + 1] == currentPosition [1]) s += mv_txt + "\n";
             }
-            //I want to make sure the above works before I delete this(the one below)
-            // if (mv_txt.find('x')) 
-            // {
-            //     if (mv_txt[mv_txt.find('x') + 1] == currentPosition [0]) s += mv_txt + "\n";
-            //     else if (mv_txt[mv_txt.find('x') + 2] == currentPosition [1]) s += mv_txt + "\n";
-            // }
-            // else if (mv_txt.length() == 3 || (mv_txt[mv_txt.length() - 1] == '+' && mv_txt.length() == 4)) 
-            // {
-            //     if (mv_txt[1] == currentPosition [0]) s += mv_txt + "\n";
-            //     else if (mv_txt[2] == currentPosition [1]) s += mv_txt + "\n";
-            // }
         }
-        else if (mv_txt[0] == 'N')
+        else if (piece == 'N' && mv_txt[0] == 'N')
         {
             //Generate all the possible squares that the knight can jump to
             int knight[8][2] = {{1,2},{1,-2},{-1,2},{-1,-2},{2,1},{2,-1},{-2,1},{-2,-1}};
@@ -114,6 +120,36 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
                     s += mv_txt + "\n";
             }
         }
+        else if(piece == 'Q' && mv_txt[0] == 'Q')
+        {
+            //Basically, the Queen has the capabilities of both the bishop and the rook
+            //Generate all the possible squares that the bishop can jump to
+            int bishop[28][2] = {{7,7},{6,6},{5,5},{4,4},{3,3},{2,2},{1,1},{-7,-7},{-6,-6},{-5,-5},{-4,-4},{-3,-3},{-2,-2},{-1,-1},{-7,7},{-6,6},{-5,5},{-4,4},{-3,3},{-2,2},{-1,1},{7,-7},{6,-6},{5,-5},{4,-4},{3,-3},{2,-2},{1,-1}};
+            int j = 0;
+            for (int i=0; i<28; i++)
+            {
+                if (currentPosition[0]+bishop[i][0] >= 'a' && currentPosition[0]+bishop[i][0] <= 'h' && currentPosition[1]+bishop[i][1] >= '1' && currentPosition[1]+bishop[i][1] <= '8')
+                {
+                    possiblebishopM[j] = std::string(1,currentPosition[0] + bishop[i][0]) + std::string(1,currentPosition[1] + bishop[i][1]);
+                    j++;
+                }
+            }
+
+             //checks if move is in the generated bishop moves list and then concatenates it to a string
+            for (int i=0; i<j; i++)
+            {
+                if (mv_txt.find(possiblebishopM[i]) != -1) 
+                    s += mv_txt + "\n";
+            }
+
+            //condition to follow if a rook is in the current location
+            for (int i=0; i<64; i++)
+            {
+                if (mv_txt[mv_txt.find(squares_txt[i])] == currentPosition [0]) s += mv_txt + "\n";
+                else if (mv_txt[mv_txt.find(squares_txt[i]) + 1] == currentPosition [1]) s += mv_txt + "\n";
+            }
+        }
+            
         else
         {
             if (mv_txt[0] == piece)
