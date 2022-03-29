@@ -97,23 +97,21 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
         {
             //Generate all the possible squares that the knight can jump to
             int knight[8][2] = {{1,2},{1,-2},{-1,2},{-1,-2},{2,1},{2,-1},{-2,1},{-2,-1}};
+            int j = 0;
             for (int i=0; i<8; i++)
             {
-                int j = 0;
                 if (currentPosition[0]+knight[i][0] >= 'a' && currentPosition[0]+knight[i][0] <= 'h' && currentPosition[1]+knight[i][1] >= '1' && currentPosition[1]+knight[i][1] <= '8')
                 {
-                    possibleknightM[j] = (currentPosition[0] + knight[i][0]) + (currentPosition[1] + knight[i][1]);
-                    printf("%s", possibleknightM[j]);
+                    possibleknightM[j] = std::string(1,currentPosition[0] + knight[i][0]) + std::string(1,currentPosition[1] + knight[i][1]);
                     j++;
                 }
             }
 
-            //scans through all the possible knight jumps from the current position
-            for (int i=0; i<8; i++)
+            //checks if move is in the generated knight moves list and then concatenates it to a string
+            for (int i=0; i<j; i++)
             {
-                if ((mv_txt[mv_txt.find(possibleknightM[i])] == currentPosition [0]) 
-                && (mv_txt[mv_txt.find(possibleknightM[i]) + 1] == currentPosition [0])) 
-                s += mv_txt + "\n";
+                if (mv_txt.find(possibleknightM[i]) != -1) 
+                    s += mv_txt + "\n";
             }
         }
         else
