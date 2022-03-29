@@ -71,10 +71,13 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
                 else if (mv_txt[3] == currentPosition [1]) s += mv_txt + "\n";
             }
         }
+<<<<<<< Updated upstream
         else if (mv_txt[0] == 'N')
         {
             
         }
+=======
+>>>>>>> Stashed changes
         else
         {
             if (mv_txt[0] == piece)

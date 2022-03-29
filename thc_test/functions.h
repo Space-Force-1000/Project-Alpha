@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -5,6 +6,8 @@
 #include "thc.h"
 #include "thc.cpp"
 
+=======
+>>>>>>> Stashed changes
 //This displays the current chess position as an array in the terminal window
 void display_position( thc::ChessRules &cr, const std::string &description );
 
