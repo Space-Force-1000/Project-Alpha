@@ -142,7 +142,7 @@ std::string GetLegalMoves( std::string currentPosition, ChessRules &cr, Move &mv
                     s += mv_txt + "\n";
             }
 
-            //condition to follow if a rook is in the current location
+            //condition to follow if a Queen(rook move) is in the current location
             for (int i=0; i<64; i++)
             {
                 if (mv_txt[mv_txt.find(squares_txt[i])] == currentPosition [0]) s += mv_txt + "\n";
