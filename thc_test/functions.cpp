@@ -15,13 +15,19 @@ std::string possiblebishopM[28];
 //         }
 //     }
 // }
+char* buffer;
 
 void display_position( thc::ChessRules &cr, const std::string &description )
 {
     std::string fen = cr.ForsythPublish();
     std::string s = cr.ToDebugStr();
+    //Serial.println(description);
     printf( "%s\n", description.c_str() );
+    //Serial.print("FEN (Forsyth Edwards Notation) = ");
+    //Serial.println(fen);
     printf( "FEN (Forsyth Edwards Notation) = %s\n", fen.c_str() );
+    //Serial.print("Position = ");
+    //Serial.println(s);
     printf( "Position = %s\n", s.c_str() );
 }
 
