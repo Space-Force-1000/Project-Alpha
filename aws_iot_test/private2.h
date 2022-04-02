@@ -4,8 +4,8 @@
 #define THINGNAME "chessBoard2"      
 
 // Topics of MQTT
-#define AWS_IOT_PUBLISH_TOPIC   "chessBoard2/moves"
-#define AWS_IOT_SUBSCRIBE_TOPIC "chessBoard1/moves"
+#define AWS_IOT_PUBLISH_TOPIC   "chessBoard2/moves" // publish topic
+#define AWS_IOT_SUBSCRIBE_TOPIC "chessBoard1/moves" // subscribe topic
 
 const char WIFI_SSID[] = "david";                                
 const char WIFI_PASSWORD[] = "swordfish";                            
